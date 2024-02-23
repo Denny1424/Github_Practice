@@ -22,7 +22,12 @@ git checkout .: 使目錄中的所有改動恢復為上次提交時的狀態(完
 git merge 分支: 將目標分支合併至目前分支，且若兩分支衝突，則需手動排除問題
 git reflog: 查詢所有對git執行的動作
 git cherry-pick: 進行採櫻桃的動作，可將後續版本的更新內容以跳著的方式添加至該版本
-
+git stash: 將目前狀態儲存至stash的暫存區，並且還原至該版本原來的樣子，stash名稱為該版本名稱
+git stash save 名稱: 儲存一個自己命名的stash至stash的暫存區
+git stash list: 查詢目前有的stash
+git stash pop: 取出最近的一個stash，並將其從stash的暫存區中刪除
+git stash apply stash數字: 取出特定的stash，並且不會從暫存區中刪除
+git stash drop stash數字: 從暫存區中移除特定stash
 
 【less 介面】
 f: 下一頁
@@ -61,6 +66,19 @@ git commit --amend 會開啟一個文字編輯器，可以在這裡面修改最�
     2.將忘了寫的東西寫好，並且存檔+追蹤(git add .)
     3.使用git commit --amend，修改版本資訊後儲存並關閉
     
+【git stash 用法】
+當我對程式做了一些修改，且修改到一半不得不去做其他事情，
+但又不想為了這一些修改上傳一個新版本時，就可以使用該指令。
+git stash 會將目前追蹤中檔案的檔案狀態儲存至stash的暫存區，並且還原至該版本原來的樣子，
+當做完別的事，想回來繼續修改該程式時，可用"git stash pop"或是"git stash drop"繼續進行修改。
+-基本用法
+    1.對程式做了一些修改，但又不想現在提交
+    2."git stash"或是"git stash save 名稱"將目前狀態儲存至stash暫存區
+    3.做完別的事情
+    4."git stash pop"或是"git stash apply stash數字"，將暫存區的狀態拿出來繼續撰寫
+    5.若使用"git stash apply"，並且已做完該stash要做的事，記得刪除"git stash"
+
+
 
 
 
