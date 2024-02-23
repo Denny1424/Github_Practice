@@ -18,6 +18,9 @@ git checkout 分支名: 切換到指定的分支，開始在該分支上進行�
 git checkout -b 分支名: 創建一個新分支，並且切換至該分支
 git checkout -: 切換至上個分支
 git merge 分支: 將目標分支合併至目前分支，且若兩分支衝突，則需手動排除問題
+git reflog: 查詢所有對git執行的動作
+git cherry-pick: 進行採櫻桃的動作，可將後續版本的更新內容以跳著的方式添加至該版本
+
 
 【less 介面】
 f: 下一頁
@@ -33,9 +36,10 @@ q: 離開
 我們知道在"C"版本的新功能出現了BUG，但"D"、"E"新增的版本的功能又是好的時候，
 這時就可使用"Cherry-Pick"的技巧，將壞櫻桃從版本去除。
 -基本做法
-    1.git reset --hard 存檔B: 將git完整回朔至存檔B
-    2.git cheer -pick 存檔D: 將存檔D的資料加入目前版本
-    3.git cheer -pick 存檔E: 將存檔E的資料加入目前版本
+    1.git log:先將想要cherry-pick的存檔點記錄下來(否則後面需要使用git reflog查詢)
+    2.git reset --hard 存檔B: 將git完整回朔至存檔B
+    3.git cherry-pick 存檔D: 將存檔D的資料加入目前版本
+    4.git cherry-pick 存檔E: 將存檔E的資料加入目前版本
     這會使我們保留了"B、D、E"這三個想要的存檔，並且將壞掉的存檔"C"丟掉
 
 【git reflog 用法】
