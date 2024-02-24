@@ -1,0 +1,60 @@
+【SSH（Secure Shell）】
+SSH 是一種用於安全連接到遠程計算機的網絡協議。
+它提供了加密的通信會話，以確保數據在客戶端和服務器之間的傳輸是安全的。
+
+【SSH 的主要用途】
+1.遠程登錄（Remote Login）： 使用 SSH，用戶可以從任何地方遠程登錄到遠程計算機並執行命令，就像在本地計算機上一樣。
+2.文件傳輸（File Transfer）： SSH 還允許在本地計算機和遠程計算機之間安全地傳輸文件，通常使用 SFTP（SSH 文件傳輸協議）或 SCP（安全複製協議）。
+3.遠程執行命令（Remote Command Execution）： 通過 SSH，可以在遠程計算機上執行命令，而無需手動登錄到該計算機。
+
+【SSH 的基本原理】
+SSH 使用了公鑰和私鑰進行加密，如RSA等加密方式。
+公鑰存儲在服務器上，而私鑰通常存儲在用戶的本地計算機上。
+
+1.生成密鑰對： 用戶首先生成一對密鑰：公鑰和私鑰。
+2.部署公鑰： 公鑰被部署到用戶希望訪問的電腦或服務器上的 authorized_keys 文件中。
+3.建立連接： 用戶使用 SSH 客戶端通過 SSH 協議連接到遠程服務器。
+4.認證過程： 服務器會向客戶端發送一個隨機字符串，客戶端使用自己的私鑰對該字符串進行加密，並將加密後的字符串發送回服務器。
+            服務器使用預先存儲的公鑰對該字符串進行解密，並將結果與原始字符串進行比較，從而驗證用戶身份。
+5.加密通信： 一旦認證成功，服務器和客戶端之間的通信就會被加密，以確保數據的安全性。
+
+【SSH 的基本用法】
+1.生成 SSH 密鑰對： 使用 ssh-keygen 命令生成 SSH 密鑰對，其中包括公鑰和私鑰。
+2.部署公鑰： 將生成的公鑰添加到要訪問的遠程服務器的 authorized_keys 文件中。
+3.連接到遠程服務器： 使用 ssh 命令連接到遠程服務器，例如 ssh username@hostname。
+4.文件傳輸： 使用 scp 或 sftp 命令在本地計算機和遠程服務器之間傳輸文件。
+5.其他操作： 可以使用 SSH 客戶端執行各種其他操作，如執行遠程命令或創建隧道連接。
+
+【ssh-keygen -t rsa -b 4096 -C "your_email@example.com":】
+1.ssh-keygen: 生成密鑰對
+2.-t rsa: 密鑰以RSA的方式加密
+3.-b 4096: 密鑰的位數為4096位(預設為2048)
+4.-C "your_email@example.com": 提供一個註釋，通常是電子郵件
+5.生成後，他會要你輸入存放位置，通常是直接放在"~/.ssh/id_rsa"，
+    其中"~/"是預設的user的基本資料夾(C:\Users\qaz)
+    而最後的"/id_rsa"則是ssh檔案的名稱，叫做"id_rsa"是一種約定俗成的命名方式。
+
+
+【ssh 認證代理人基本用法】
+當登入其他需要使用ssh的地方時，需要輸入密碼，
+使用ssh認證代理人的方式，即可自動輸入密碼，省去手動輸入的麻煩。
+-使用方式:
+    1.ssh-add /Users/*yourUserNameHere*/.ssh/id_rsa:
+        將SSH私鑰添加到ssh-agent，之後ssh-agent就會自動幫忙進行身分驗證
+
+【ssh 連上別人的電腦的方法】
+首先需要確認以下幾點:
+1.需要連上的電腦的IP或域名
+2.用戶名和密碼，亦或是SSH密鑰
+-使用方式:
+    1.在別人那邊建立一個名稱為"authorized_keys"的文件，以文字編輯器打開，並將我的的公鑰貼進去
+    2.打開CMD，輸入"ssh username@remote_host"，其中username是用戶名，remote_host是IP或域名
+
+【ssh 文件傳輸】
+可使用ssh傳輸文件，以傳輸文件給朋友舉例。
+以下皆須在CMD的環境下輸入。
+-使用方式:
+    1.ssh username@remote_hostssh: 以ssh的方式連接至朋友的電腦
+    2.scp local_file.txt username@remote_host:/remote/directory/
+        將本地文件'local_file.txt'傳送至朋友user下的/remote/directory目錄
+        (也可使用基於ssh的文件傳輸工具，如"sftp"或"rsync")
