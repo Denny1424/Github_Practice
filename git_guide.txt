@@ -16,7 +16,7 @@ git branch: 顯示當前儲存庫中的所有分支，以及哪個分支是當�
 git branch 分支名: 創建一個新的分支，並以指定的名稱命名。
 git branch -d 分支名: 刪除支線
 git branch -M 名稱: 將目前分支改名為新的名稱
-git checkout 分支名: 切換到指定的分支，開始在該分支上進行工作。
+git checkout 分支名: 切換到指定的分支，開始在該分支上進行工作，也可用於將github上的分支抓下來。
 git checkout -b 分支名: 創建一個新分支，並且切換至該分支
 git checkout -: 切換至上個分支
 git checkout .: 使目錄中的所有改動恢復為上次提交時的狀態(完整的恢復至該版本原有樣子)

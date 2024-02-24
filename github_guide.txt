@@ -3,3 +3,15 @@
 2..gitignore: 建立一個.gitignore檔案，在版本更新時，會根據該檔案的內容，忽略不要進行版控的檔案
 3.license: 可以選擇許可證，授予他人在何種條件下可以使用、修改、分發該資料庫及代碼
 
+【git中的github指令】
+1.git clone repo連結: 將github連結上的repo複製到現在的資料夾
+2.git remote add origin repo連結: 將現在本地的檔案，上傳至github連結的repo，
+    git remote add: git的指令，用於添加一個新的遠端repo
+    origin: 遠端儲存庫的別名，可以取其他的，但通常會用origin代表默認遠端儲存庫
+    repo連結: github上儲存庫的連結，也可為SSH的連結
+3.git pull: 用github上的repo更新本地端的檔案
+4.git push: 用本地的檔案更新github上的repo
+5.git push -u origin 分支名: 將分支推送至遠端儲存庫
+    git push -u: 為'git push --set-upstream'縮寫 
+    origin: 遠端儲存庫的別名，可以取其他的，但通常會用origin代表默認遠端儲存庫
+    分支名: 這裡未必要是分支，若未上傳過資料，也可用主支線名上傳資料
