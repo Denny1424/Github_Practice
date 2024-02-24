@@ -6,12 +6,21 @@
 【git中的github指令】
 1.git clone repo連結: 將github連結上的repo複製到現在的資料夾
 2.git remote add origin repo連結: 將現在本地的檔案，上傳至github連結的repo，
-    git remote add: git的指令，用於添加一個新的遠端repo
-    origin: 遠端儲存庫的別名，可以取其他的，但通常會用origin代表默認遠端儲存庫
-    repo連結: github上儲存庫的連結，也可為SSH的連結
+        git remote add: git的指令，用於添加一個新的遠端repo
+        origin: 遠端儲存庫的別名，可以取其他的，但通常會用origin代表默認遠端儲存庫
+        repo連結: github上儲存庫的連結，也可為SSH的連結
 3.git pull: 用github上的repo更新本地端的檔案
-4.git push: 用本地的檔案更新github上的repo
-5.git push -u origin 分支名: 將分支推送至遠端儲存庫
-    git push -u: 為'git push --set-upstream'縮寫 
-    origin: 遠端儲存庫的別名，可以取其他的，但通常會用origin代表默認遠端儲存庫
-    分支名: 這裡未必要是分支，若未上傳過資料，也可用主支線名上傳資料
+4.git pull origin 分支名: 用指定的分支更新本地端的檔案
+5.git push: 用本地的檔案更新github上的repo
+6.git push -u origin 分支名: 將分支推送至遠端儲存庫
+        git push -u: 為'git push --set-upstream'縮寫 
+        origin: 遠端儲存庫的別名，可以取其他的，但通常會用origin代表默認遠端儲存庫
+        分支名: 這裡未必要是分支，若未上傳過資料，也可用主支線名上傳資料
+7.git branch -r: 查看github上有哪些分支
+8.git checkout 分支名: 切換到指定的分支，開始在該分支上進行工作，也可用於將github上的分支抓下來。
+9.git config pull.rebase false: 將pull的預設操作設為merge
+
+【git config pull.rebase false】
+該指令是在修改git config，將merge作為pull的預設操作 (pull.rebase ture，則使用rebase)
+修改這個的原因是因為，大多情況遇到合併衝突時，都是使用merge而不是rebase
+若不修改，當遇到合併衝突時會報錯
