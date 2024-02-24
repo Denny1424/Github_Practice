@@ -12,7 +12,9 @@ git commit --amend: 用於修改最新版本的內容，當有忘記寫入的小
 git log: 用於檢視版本控制系統的提交紀錄，顯示先前的提交歷史記錄，若進入less模式，可用"q"退出
 git reset 版本代碼: 回到至該版本，回到的位置為修改後、上傳前，並且會保留文件現有的樣子
 git reset --hard 版本代碼: 完整回復至該版本提交前的樣子
-git revert 版本代碼: 用於取消錯誤的commit
+git revert 版本代碼: 用於取消錯誤的commit，並且commit一個新的版本
+git revert 開始版本..結束版本: 可用於取消多個連續錯誤的commit，並且commit一個新的版本
+git rebase 目標分支: 將當前的分支重組到目標分支的最新提交上
 git branch: 顯示當前儲存庫中的所有分支，以及哪個分支是當前活動分支。
 git branch 分支名: 創建一個新的分支，並以指定的名稱命名。
 git branch -d 分支名: 刪除支線
